@@ -125,6 +125,25 @@ SYSINIT_DRIVER_REFERENCE(lem, pci);
 SYSINIT_DRIVER_REFERENCE(igb, pci);
 SYSINIT_DRIVER_REFERENCE(em, pci);
 
+#elif defined(LIBBSP_ARM_RASPBERRYPI_BSP_H)
+
+#include <bsp/irq.h>
+
+static const rtems_bsd_device_resource bcm283x_dwcotg_res[] = {
+	{
+		.type = RTEMS_BSD_RES_MEMORY,
+		.start_request = 0,
+		.start_actual = 0x00006000
+	}, {
+		.type = RTEMS_BSD_RES_IRQ,
+		.start_request = 0,
+		.start_actual = 17
+	}
+};
+
+RTEMS_BSD_DEFINE_NEXUS_DEVICE(bcm283x_dwcotg, 0, RTEMS_ARRAY_SIZE(bcm283x_dwcotg_res),
+    &bcm283x_dwcotg_res[0]);
+
 #elif defined(LIBBSP_POWERPC_QORIQ_BSP_H)
 
 #if !QORIQ_CHIP_IS_T_VARIANT(QORIQ_CHIP_VARIANT)

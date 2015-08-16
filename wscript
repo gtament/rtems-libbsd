@@ -626,6 +626,7 @@ def build(bld):
     libbsd_use += ["objs06"]
 
     source = ['freebsd/sys/arm/xilinx/zy7_slcr.c',
+              'freebsd/sys/arm/broadcom/bcm2835/bcm283x_dwc_fdt.c',
               'freebsd/sys/cam/cam.c',
               'freebsd/sys/cam/scsi/scsi_all.c',
               'freebsd/sys/contrib/altq/altq/altq_cbq.c',
@@ -710,6 +711,8 @@ def build(bld):
               'freebsd/sys/dev/sdhci/sdhci.c',
               'freebsd/sys/dev/smc/if_smc.c',
               'freebsd/sys/dev/tsec/if_tsec.c',
+              'freebsd/sys/dev/usb/controller/dwc_otg.c',
+              'freebsd/sys/dev/usb/controller/dwc_otg_fdt.c',
               'freebsd/sys/dev/usb/controller/ehci.c',
               'freebsd/sys/dev/usb/controller/ohci.c',
               'freebsd/sys/dev/usb/controller/usb_controller.c',

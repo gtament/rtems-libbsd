@@ -85,6 +85,9 @@ struct usb_bus {
 	 * This mutex protects the USB hardware:
 	 */
 	struct mtx bus_mtx;
+    #ifdef __rtems__
+    struct mtx bus_spin_lock;
+    #endif
 	struct usb_xfer_queue intr_q;
 	struct usb_callout power_wdog;	/* power management */
 

@@ -1,8 +1,5 @@
-#include <machine/rtems-bsd-kernel-space.h>
-
-/* $FreeBSD$ */
 /*-
- * Copyright (c) 2008 Hans Petter Selasky. All rights reserved.
+ * Copyright (c) 2012 Hans Petter Selasky. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -24,45 +21,19 @@
  * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
+ *
+ * $FreeBSD$
  */
 
-/*
- * USB specifications and other documentation can be found at
- * http://www.usb.org/developers/docs/ and
- * http://www.usb.org/developers/devclass_docs/
- */
+#ifndef _DWC_OTG_FDT_H_
+#define	_DWC_OTG_FDT_H_
 
-#include <sys/stdint.h>
-#include <sys/stddef.h>
-#include <rtems/bsd/sys/param.h>
-#include <sys/queue.h>
-#include <rtems/bsd/sys/types.h>
-#include <sys/systm.h>
-#include <sys/kernel.h>
-#include <sys/bus.h>
-#include <sys/module.h>
-#include <rtems/bsd/sys/lock.h>
-#include <sys/mutex.h>
-#include <sys/condvar.h>
-#include <sys/sysctl.h>
-#include <sys/sx.h>
-#include <rtems/bsd/sys/unistd.h>
-#include <sys/callout.h>
-#include <sys/malloc.h>
-#include <sys/priv.h>
-
-#include <dev/usb/usb.h>
-#include <dev/usb/usbdi.h>
-
-#ifdef __rtems__
-const struct usb_string_lang usb_string_lang_en = {
-	sizeof(usb_string_lang_en), UDESC_STRING,
-	{ 0x09, 0x04 } /* American English */
+struct dwc_otg_fdt_softc {
+	struct dwc_otg_softc sc_otg;	/* must be first */
 };
+
+extern driver_t dwc_otg_driver;
+
+device_attach_t dwc_otg_attach;
+
 #endif
-
-MALLOC_DEFINE(M_USB, "USB", "USB");
-MALLOC_DEFINE(M_USBDEV, "USBdev", "USB device");
-MALLOC_DEFINE(M_USBHC, "USBHC", "USB host controller");
-
-MODULE_VERSION(usb, 1);
