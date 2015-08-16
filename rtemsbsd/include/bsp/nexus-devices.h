@@ -133,7 +133,7 @@ static const rtems_bsd_device_resource bcm283x_dwcotg_res[] = {
 	{
 		.type = RTEMS_BSD_RES_MEMORY,
 		.start_request = 0,
-		.start_actual = 0x00006000
+		.start_actual = 0x00980000
 	}, {
 		.type = RTEMS_BSD_RES_IRQ,
 		.start_request = 0,
